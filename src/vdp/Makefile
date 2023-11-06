@@ -1,7 +1,6 @@
 CXX ?= g++
-CFLAGS = -Wall -O2 -fmax-errors=1 -std=c++11 -g -I. -I./dispdrivers -I./userspace-vdp-gl/src -I./userspace-vdp-gl/src/userspace-platform -I./userspace-vdp-gl/src/dispdrivers
-OPTIONS =
-
+CFLAGS = -Wall -O2 -fmax-errors=1 -std=c++11 $(EXTRA_FLAGS) -g -I. -I./dispdrivers -I./userspace-vdp-gl/src -I./userspace-vdp-gl/src/userspace-platform -I./userspace-vdp-gl/src/dispdrivers
+OPTIONS = 
 SRCS = rust_glue.cpp
 
 OBJS = $(SRCS:.cpp=.o)
@@ -15,7 +14,7 @@ userspace-vdp-gl/vdp_gl.a:
 	$(MAKE) -C userspace-vdp-gl/src
 
 test_main: $(OBJS) userspace-vdp-gl/vdp_gl.a vdp_quark104.o test_main.o
-	$(CXX) $(OBJS) test_main.o vdp-1.03.o userspace-vdp-gl/src/vdp-gl.a -o test_main
+	$(CXX) $(OBJS) -lpthread test_main.o vdp-1.03.o userspace-vdp-gl/src/vdp-gl.a -o test_main
 
 vdp_console8.so: $(OBJS) userspace-vdp-gl/vdp_gl.a vdp-console8.o
 	$(CXX) -shared $(OBJS) vdp-console8.o userspace-vdp-gl/src/vdp-gl.a -o vdp_console8.so
