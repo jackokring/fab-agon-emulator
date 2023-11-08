@@ -9,4 +9,4 @@ fabgl::SoundGenerator *getVDPSoundGenerator() {
 	return &SoundGenerator;
 }
 
-#include "vdp-quark666/video.ino"
+#include "vdp-quark666/video/video.ino"
