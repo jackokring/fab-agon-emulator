@@ -3,7 +3,7 @@
 	url = https://github.com/tomm/userspace-vdp-gl.git
 [submodule "sdcard"]
 	path = sdcard
-	url = https://github.com/jackokring/popup-mos.git
+	url = git@github.com:jackokring/popup-mos.git
 [submodule "src/vdp/vdp-console8"]
 	path = src/vdp/vdp-console8
 	url = https://github.com/tomm/agon-vdp
