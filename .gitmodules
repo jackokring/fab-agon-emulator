@@ -1,6 +1,6 @@
 [submodule "src/vdp/userspace-vdp-gl"]
 	path = src/vdp/userspace-vdp-gl
-	url = https://github.com/tomm/userspace-vdp-gl.git
+	url = https://github.com/jackokring/userspace-vdp-gl.git
 [submodule "sdcard"]
 	path = sdcard
 	url = git@github.com:jackokring/popup-mos.git
