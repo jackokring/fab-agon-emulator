@@ -44,7 +44,14 @@ extern void vdu_sys_video_kblayout();
 extern void vdu_sys_audio();
 extern void vdu_sys_video_time();
 extern void vdu_sys_keystate();
+extern void vdu_sys_delete();//new
+extern void vdu_escape();//new
+extern void setConsoleMode(bool mode);//new
+extern void switchTerminalMode();//new
 extern uint8_t play_note(uint8_t channel, uint8_t volume, uint16_t frequency, uint16_t duration);
 extern void printFmt(const char *format, ...);
 
 extern fabgl::SoundGenerator		SoundGenerator;		// The audio class
+
+extern uint8_t * free256();//new
+extern uint8_t * free8();//new

@@ -389,13 +389,15 @@ pub fn main() -> Result<(), pico_args::Error> {
             canvas.present();
         }
     }
-
-    // signal the shutdown to any other listeners
-    emulator_shutdown.store(true, std::sync::atomic::Ordering::Relaxed);
-
+	
     // give vdp some time to shutdown
     unsafe { (*vdp_interface.vdp_shutdown)(); }
-    std::thread::sleep(std::time::Duration::from_millis(200));
+    std::thread::sleep(std::time::Duration::from_millis(1000));
+    //panic!("termination sequence");
+    
+    // maybe shutdown vdp before wild shutdown ?
+    // signal the shutdown to any other listeners
+    emulator_shutdown.store(true, std::sync::atomic::Ordering::Relaxed);
 
     Ok(())
 }
