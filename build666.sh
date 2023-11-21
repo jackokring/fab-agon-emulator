@@ -1,7 +1,16 @@
 #!/usr/bin/bash
+
+export TZ="UTC"
+# add commit push
+gacp () {
+	date=$(date +"%A %Y-%m-%d %H:%M:%S")
+  message="${1:-$date}"
+  git add . ; git commit -m "$message" ; git push
+}
+
 echo "Building VDP 6.66 Rolling Distribution in 'fab-agon-emulator'?"
-rm /src/vdp/vdp_quark666.so
-rm /src/vdp/vdp_quark666.o
+rm src/vdp/vdp_quark666.so
+rm src/vdp/vdp_quark666.o
 make
 echo "Any Errors? Maybe ^C and try again."
 echo "Have you made 'firmware.bin' using VSCode?"
