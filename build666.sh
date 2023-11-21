@@ -14,10 +14,14 @@ rm src/vdp/vdp_quark666.o
 make
 echo "Any Errors? Maybe ^C and try again."
 echo "Have you made 'firmware.bin' using VSCode?"
-echo "Don't forget to // #define EMULATED from 'agon.h'." 
+echo "No? I should do that via the shell."
+read -p "Press any key to resume ..."
+pushd src/vdp/vdp-quark666
+pio pkg update
+pio run
+popd
 read -p "Press any key to resume ..."
 cp -i src/vdp/vdp-quark666/.pio/build/esp32dev/firmware.bin src/vdp/vdp-quark666/.pio/build/project.checksum sdcard
-echo "Have you deleted the // to #define EMULATED again?"
 echo "Don't forget any changes to 'STATUS.md' and 'README.md'."
 echo "Have you updated the 'mos.bin'? Please manual copy it (if necessary)."
 echo "This would also be an ideal time to update 'bbcbasic.bin' and other tools."
@@ -36,7 +40,7 @@ echo "Making 'kernal.bin' using 'gforth'."
 gforth crossz80.4th
 echo "Compiling glossary of fof words."
 gforth doglos.4th
-echo "Were there any errors?"
+echo "Were there any errors (not the redefinitions in the cross compilier)?"
 read -p "Press any key to resume ..."
 # git add commit push auto dated commit
 gacp
